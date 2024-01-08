@@ -1,17 +1,14 @@
-import { Counter } from './counter'
+import { useState } from 'react'
 
-export const Home = () => (
-  <div className='mt-10 flex w-full flex-col items-center'>
-    <div className='flex w-full flex-col items-center justify-between gap-6 text-center lg:flex-row lg:text-left'>
-      <h2 className='flex w-full justify-center text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl'>
-        <span className='w-96 text-center'>
-          Vite + React + Typescript + TailwindCSS + React Router + Redux + Redux Toolkit + Eslint + Prettier + Vitest
-        </span>
-      </h2>
+
+const questionsAndAnswers: string[][] = [['beer', 'cerveza'], ['tree', 'árbol'], ['car', 'coche']]
+export const Home = () => {
+  const [question, setQuestion] = useState<string>('')
+
+  return <div className='flex h-screen w-full flex-col items-center bg-gray-100'>
+    <div className='flex w-full h-full items-center justify-center gap-x-2'>
+      <input className='px-4 py-2' type='text' value={question} onChange={e => setQuestion(e.target.value)}/>
+      <button className='rounded-full px-4 py-2 bg-blue-400 text-white'>Submit</button>
     </div>
-    <div className='flex justify-center'>
-      <img className='w-1/4' src='./logo-with-shadow.png' alt='Vite Logo' />
-    </div>
-    <Counter title='my counter' />
   </div>
-)
+}
